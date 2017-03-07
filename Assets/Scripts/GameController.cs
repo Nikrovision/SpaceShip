@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject hazard;
-    public Vector3 spawnValues;
     public int hazardCount;
     public float spawnWait, startWait, waveWait;
+    public float x, y, z;
 
     IEnumerator SpawnAsteroids()
     {
@@ -16,9 +16,8 @@ public class GameController : MonoBehaviour {
         {
             for (int i = 0; i < hazardCount; i++)
             {//Задаем координаты появления астероидов
-                Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
                 Quaternion spawnRotation = Quaternion.identity;
-                Instantiate(hazard, spawnPosition, spawnRotation);
+                Instantiate(hazard, new Vector3(Random.Range(-x, x),Random.Range(-y, y),Random.Range(-z, z)), spawnRotation);
                 yield return new WaitForSeconds(spawnWait);//Задержка между появлениями астероидов
             }
             yield return new WaitForSeconds(waveWait);
@@ -28,5 +27,4 @@ public class GameController : MonoBehaviour {
     {
         StartCoroutine(SpawnAsteroids());
     }
-
 }

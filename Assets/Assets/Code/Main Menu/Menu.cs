@@ -6,6 +6,8 @@ public class Menu : MonoBehaviour
 {
     //Переменная для нумерации окон
     public int window;
+    public Menu menu;
+    //public QualityLevel Fastest;
 
     void Start()
     {
@@ -32,7 +34,7 @@ public class Menu : MonoBehaviour
                 window = 4;
             }
         }
-        //Если нажата кнопка "Играть"
+        //Если нажата кнопка "Start"
         if (window == 2)
         {
             GUI.Label(new Rect(50, 10, 180, 30), "Choose Level");
@@ -44,7 +46,7 @@ public class Menu : MonoBehaviour
             if (GUI.Button(new Rect(10, 80, 180, 30), "Level 2"))
             {
                 Debug.Log("Level 2");
-                Application.LoadLevel(2);
+                Application.LoadLevel("Level 2");
             }
             if (GUI.Button(new Rect(10, 120, 180, 30), "Level 3"))
             {
@@ -56,13 +58,15 @@ public class Menu : MonoBehaviour
                 window = 1;
             }
         }
-        //Если нажата кнопка "Настройки"
+        //Если нажата кнопка "Settings"
         if (window == 3)
         {
             GUI.Label(new Rect(50, 10, 180, 30), "Settings");
             if (GUI.Button(new Rect(10, 120, 180, 30), "Quality"))
             {
+                window = 5;
             }
+
             if (GUI.Button(new Rect(10, 160, 180, 30), "Back"))
             {
                 window = 1;
@@ -81,7 +85,30 @@ public class Menu : MonoBehaviour
                 window = 1;
             }
         }
+
+        if (window == 5)
+        {
+            GUI.Label(new Rect(50, 10, 180, 30), "Quality Settings");
+            if (GUI.Button(new Rect(10, 40, 180, 30), "Low"))
+            {
+                Debug.Log("Low Quality");
+                QualitySettings.SetQualityLevel(0);
+            }
+            if (GUI.Button(new Rect(10, 80, 180, 30), "Medium"))
+            {
+                Debug.Log("Medium Quality");
+                QualitySettings.SetQualityLevel(3);
+            }
+            if (GUI.Button(new Rect(10, 120, 180, 30), "High"))
+            {
+                Debug.Log("High Quality");
+                QualitySettings.SetQualityLevel(5);
+            }
+            if (GUI.Button(new Rect(10, 160, 180, 30), "Back"))
+            {
+                window = 1;
+            }
+        }
         GUI.EndGroup();
     }
-
 }

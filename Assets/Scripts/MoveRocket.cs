@@ -5,6 +5,14 @@ using UnityEngine;
 public class MoveRocket : MonoBehaviour {
 
     public float speed;
+
+    void OnCollisionEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Asteroid")
+        {
+            Destroy(gameObject);
+        }
+    }
    
     public void Start()
     { //Задаем ракете направление движения и скорость
