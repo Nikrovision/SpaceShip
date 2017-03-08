@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -41,17 +42,17 @@ public class Menu : MonoBehaviour
             if (GUI.Button(new Rect(10, 40, 180, 30), "Level 1"))
             {
                 Debug.Log("Level 1");
-                Application.LoadLevel("Main");
+                SceneManager.LoadScene("Main");
             }
             if (GUI.Button(new Rect(10, 80, 180, 30), "Level 2"))
             {
                 Debug.Log("Level 2");
-                Application.LoadLevel("Level 2");
+                SceneManager.LoadScene("Level 2");
             }
             if (GUI.Button(new Rect(10, 120, 180, 30), "Level 3"))
             {
                 Debug.Log("Level 3");
-                Application.LoadLevel(3);
+                SceneManager.LoadScene(3);
             }
             if (GUI.Button(new Rect(10, 160, 180, 30), "Back"))
             {

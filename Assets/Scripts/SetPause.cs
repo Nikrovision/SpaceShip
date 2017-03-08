@@ -1,58 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SetPause : MonoBehaviour {
 
-    public float Timer;
-    public bool IsPause;
-    public bool GuiPause;
+    public float timer;
+    public bool isPause;
+    public bool guiPause;
 
     void Update()
     {
-        Time.timeScale = Timer;
-        if (Input.GetKeyDown(KeyCode.Escape) && IsPause == false)//Если нажата ESC и пауза не стоит, ставим
+        Time.timeScale = timer;
+        if (Input.GetKeyDown(KeyCode.Escape) && isPause == false)//Если нажата ESC и пауза не стоит, ставим
         {
-            IsPause = true;
+            isPause = true;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && IsPause == true)//Если стоит, снимаем
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPause == true)//Если стоит, снимаем
         {
-            IsPause = false;
+            isPause = false;
         }
-        if (IsPause == true)
+        if (isPause == true)
         {
-            Timer = 0;
-            GuiPause = true;
+            timer = 0;
+            guiPause = true;
 
         }
-        else if (IsPause == false)
+        else if (isPause == false)
         {
-            Timer = 1f;
-            GuiPause = false;
+            timer = 1f;
+            guiPause = false;
 
         }
     }
     public void OnGUI()
     {
-        if (GuiPause == true)
+        if (guiPause == true)
         {
             Cursor.visible = true;// включаем отображение курсора
             if (GUI.Button(new Rect((float)(Screen.width / 2), (float)(Screen.height / 2) - 150f, 150f, 45f), "Continue"))
             {
-                IsPause = false;
-                Timer = 0;
+                isPause = false;
+                timer = 0;
                 Cursor.visible = false;
             }
             if (GUI.Button(new Rect((float)(Screen.width / 2), (float)(Screen.height / 2) -100, 150f, 45f), "Restart"))
             {
-                IsPause = false;
-                Timer = 0;
+                isPause = false;
+                timer = 0;
                 Application.LoadLevel(Application.loadedLevel);
             }
             if (GUI.Button(new Rect((float)(Screen.width / 2), (float)(Screen.height / 2), 150f, 45f), "Starting Menu"))
             {
-                IsPause = false;
-                Timer = 0;
+                isPause = false;
+                timer = 0;
                 Application.LoadLevel("Menu");
             }
         }

@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Delete : MonoBehaviour {
 
-    private ParticleSystem PS;
+    private ParticleSystem ps;
 
     void Start()
     {
-        PS = (ParticleSystem)GetComponent(typeof(ParticleSystem));
+        ps = (ParticleSystem)GetComponent(typeof(ParticleSystem));
     }
 
     void Update()
     {
-        if (PS)
-            if (!PS.IsAlive())
+        if (ps)
+            if (!ps.IsAlive())
                 Destroy(gameObject);
     }
 }

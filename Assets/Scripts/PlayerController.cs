@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour
 
     public int currrentSpeed = 30;
     private GameObject[] turbines;
-    public GameObject Shot;
-    public Transform ShotSpawn;
-    public float FireRate;
-    private float NextFire;
+    public GameObject shot;
+    public Transform shotSpawn;
+    public float fireRate;
+    private float nextFire;
+    public float lifeTime;
 
     //Инициализируем турбины
     void Start()
@@ -24,10 +25,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {//Производим выстрелы ракетами при нажатии ЛКМ
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > NextFire)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > nextFire)
         {
-            NextFire = Time.time + FireRate;
-            Instantiate(Shot, ShotSpawn.position, ShotSpawn.rotation);
+            nextFire = Time.time + fireRate;
+            GameObject d = Instantiate(shot, shotSpawn.position, shotSpawn.rotation) as GameObject;
+            Destroy(d, lifeTime);
         }
     }
 

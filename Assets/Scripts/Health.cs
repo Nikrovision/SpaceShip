@@ -4,34 +4,33 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
 
-    public float MaxHP;
-    public float CurrentHP;
-    public float Percent;
+    public float maxHP;
+    public float currentHP;
+    public float percent;
     public Texture2D text2d;
-    public GameObject PlayerExplosion;
+    public GameObject playerExplosion;
 
     void OnGUI()
     {
-        Percent = CurrentHP / MaxHP;
+        percent = currentHP / maxHP;
 
-        GUI.DrawTexture(new Rect(Screen.width - 150, Screen.height - 15, 150 * Percent, 10), text2d);
+        GUI.DrawTexture(new Rect(Screen.width - 150, Screen.height - 15, 150 * percent, 10), text2d);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Asteroid")
         {
-            CurrentHP -= 20;
+            currentHP -= 20;
         }
     }
     
     void Update()
     {
-        if (CurrentHP <= 0)
+        if (currentHP <= 0)
         {
-            Instantiate(PlayerExplosion, transform.position, transform.rotation);
+            Instantiate(playerExplosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(GameObject.Find("Player"));
     }
 }

@@ -43,6 +43,10 @@ public class CameraController : MonoBehaviour
     void SmoothFollow()
     {
         //Обеспечивает гладкость слежения
+
+        if (target == null)
+            return;
+
         wantedPosition = target.TransformPoint(0, height, -distance);
 
         transform.position = Vector3.Lerp(transform.position, wantedPosition, Time.deltaTime * damping);
