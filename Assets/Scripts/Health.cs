@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour {
 
     public float maxHP;
-    public float currentHP;
+    public static float currentHP = 100;
     public float percent;
     public Texture2D text2d;
     public GameObject playerExplosion;

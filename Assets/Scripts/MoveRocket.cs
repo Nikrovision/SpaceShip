@@ -6,7 +6,7 @@ public class MoveRocket : MonoBehaviour {
 
     public float speed;
 
-    void OnCollisionEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Asteroid")
         {

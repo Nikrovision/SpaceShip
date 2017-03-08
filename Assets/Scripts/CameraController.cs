@@ -10,6 +10,7 @@ public class CameraController : MonoBehaviour
     private Transform target;
     private GameObject player;
     private Vector3 wantedPosition;
+    private SetPause isPause;
 
     public float distance = 50.0f;
     public float height = 3.0f;
@@ -37,15 +38,18 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        if (isPause == true)
+        {
+            target = null;
+            return;
+        }
+
         SmoothFollow();
     }
 
     void SmoothFollow()
     {
         //Обеспечивает гладкость слежения
-
-        if (target == null)
-            return;
 
         wantedPosition = target.TransformPoint(0, height, -distance);
 

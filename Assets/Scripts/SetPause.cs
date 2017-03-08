@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class SetPause : MonoBehaviour {
 
     public float timer;
     public bool isPause;
     public bool guiPause;
+    public float scene;
 
     void Update()
     {
@@ -23,13 +25,11 @@ public class SetPause : MonoBehaviour {
         {
             timer = 0;
             guiPause = true;
-
         }
         else if (isPause == false)
         {
             timer = 1f;
             guiPause = false;
-
         }
     }
     public void OnGUI()
@@ -47,13 +47,14 @@ public class SetPause : MonoBehaviour {
             {
                 isPause = false;
                 timer = 0;
-                Application.LoadLevel(Application.loadedLevel);
+                Scene scene = SceneManager.GetActiveScene();
+                SceneManager.LoadScene(scene.name);
             }
             if (GUI.Button(new Rect((float)(Screen.width / 2), (float)(Screen.height / 2), 150f, 45f), "Starting Menu"))
             {
                 isPause = false;
                 timer = 0;
-                Application.LoadLevel("Menu");
+                SceneManager.LoadScene("Menu");
             }
         }
     }

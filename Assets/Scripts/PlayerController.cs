@@ -63,9 +63,9 @@ public class PlayerController : MonoBehaviour
                 MaxTurbines(0.55f);
             }
 
-            Vector3 mouseMovement = (Input.mousePosition - (new Vector3(Screen.width, Screen.height, 0) / 2.0f)) * 1;
-            transform.Rotate(new Vector3(-mouseMovement.y, mouseMovement.x, -mouseMovement.x) * 0.025f);
-            transform.Translate(Vector3.forward * Time.deltaTime * currrentSpeed);
+                Vector3 mouseMovement = (Input.mousePosition - (new Vector3(Screen.width, Screen.height, 0) / 2.0f)) * 1;
+                transform.Rotate(new Vector3(-mouseMovement.y, mouseMovement.x, -mouseMovement.x) * 0.025f);
+                transform.Translate(Vector3.forward * Time.deltaTime * currrentSpeed);
         }
     }
     //Максимальный огонь из турбин
