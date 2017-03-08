@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class Portal : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
-            Application.LoadLevel("Level 2");
+            SceneManager.LoadScene("Level 2");
             player.transform.position = portal.position;
         }
     }

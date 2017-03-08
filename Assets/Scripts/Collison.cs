@@ -1,27 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Collison : MonoBehaviour {
 
-	//Метод принимает объект класса Collision, с которым происходит столкновение
-    void OnCollisionEnter(Collision myCollision)
+    void OnCollisionEnter(Collision other)
     {
         //Столкновение с объектом
-        if (myCollision.gameObject.name == "asteroid3")
+        if (other.gameObject.name == "asteroid")
         {
             //Указание на объект с которым столкнулись 
-            Debug.Log("Hit the asteroid3");
+            Debug.Log("Our ship collided with an asteroid");
         }
-        else if (myCollision.gameObject.name == "asteroid1")
+        else if (other.gameObject.name == "Protal")
         {
             //Указание на объект с которым столкнулись 
-            Debug.Log("Hit the asteroid1");
-        }
-        else if (myCollision.gameObject.name == "asteroid2")
-        {
-            //Указание на объект с которым столкнулись 
-            Debug.Log("Hit the asteroid2");
+            Debug.Log("Our ship moved throught the portal");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class Health : MonoBehaviour {
     public float percent;
     public Texture2D text2d;
     public GameObject playerExplosion;
+    public Text gameoverText;
+
 
     void OnGUI()
     {
@@ -31,6 +34,12 @@ public class Health : MonoBehaviour {
         {
             Instantiate(playerExplosion, transform.position, transform.rotation);
             Destroy(gameObject);
+            gameoverText.text = "GAME OVER";
         }
+    }
+
+    void Start()
+    {
+        gameoverText.text = "";
     }
 }
