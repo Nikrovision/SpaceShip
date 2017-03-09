@@ -43,7 +43,6 @@ public class CameraController : MonoBehaviour
             target = null;
             return;
         }
-
         SmoothFollow();
     }
 
