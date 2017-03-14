@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private GameObject[] turbines;
     public GameObject shot;
     public Transform shotSpawn;
+    public GameObject vistrel;
+    public Transform vistrelSpawn;
     public float fireRate;
     private float nextFire;
     public float lifeTime;
@@ -31,6 +33,13 @@ public class PlayerController : MonoBehaviour
             nextFire = Time.time + fireRate;
             GameObject d = Instantiate(shot, shotSpawn.position, shotSpawn.rotation) as GameObject;
             Destroy(d, lifeTime);
+        }
+        //Выстрел на ПКМ
+        if (Input.GetKeyDown(KeyCode.Mouse1) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            GameObject r = Instantiate(vistrel, vistrelSpawn.position, vistrelSpawn.rotation) as GameObject;
+            Destroy(r, lifeTime);
         }
     }
 
@@ -76,5 +85,4 @@ public class PlayerController : MonoBehaviour
             turbine.GetComponent<LensFlare>().brightness = intensity;
         }
     }
-
 }

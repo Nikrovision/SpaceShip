@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     private Transform target;
     private GameObject player;
     private Vector3 wantedPosition;
-    private SetPause isPause;
+    private Pause isPause;
 
     public float distance = 50.0f;
     public float height = 3.0f;
@@ -43,7 +43,10 @@ public class CameraController : MonoBehaviour
             target = null;
             return;
         }
-        SmoothFollow();
+        else if (isPause == false)
+        {
+            SmoothFollow();
+        }
     }
 
     void SmoothFollow()
